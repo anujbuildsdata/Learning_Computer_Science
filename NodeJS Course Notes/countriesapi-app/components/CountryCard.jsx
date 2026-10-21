@@ -11,23 +11,22 @@ export default function CountryCard({
 }) {
   return (
     <Link className="country-card" to={`/${name}`} state={data}>
-      <div className='flag-container'>
-        <img src={flag} alt={name + ' Flag'} />
+      <div className="flag-container">
+        <img src={flag} alt={name + ' Flag'} loading="lazy" />
+        <span className="region-badge">{region}</span>
       </div>
       <div className="card-text">
         <h3 className="card-title">{name}</h3>
-        <p>
-          <b>Population: </b>
-          {population.toLocaleString('en-IN')}
-        </p>
-        <p>
-          <b>Region: </b>
-          {region}
-        </p>
-        <p>
-          <b>Capital: </b>
-          {capital}
-        </p>
+        <div className="card-meta">
+          <p>
+            <span>Population</span>
+            <b>{population.toLocaleString('en-IN')}</b>
+          </p>
+          <p>
+            <span>Capital</span>
+            <b>{capital || '—'}</b>
+          </p>
+        </div>
       </div>
     </Link>
   )

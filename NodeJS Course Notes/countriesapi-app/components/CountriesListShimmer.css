@@ -1,33 +1,56 @@
-main .shimmer-card {
-    --shimmer-color: hsl(0, 0%, 78%);
-}
-
-main.dark .shimmer-card {
-    --shimmer-color: hsl(208, 21%, 34%);
-}
-
-
 .shimmer-card {
-    height: 338px;
-    background-color: var(--elements-color);
+    height: 318px;
+    background-color: var(--glass-bg);
+}
+
+.shimmer-card .flag-container,
+.shimmer-card .card-title,
+.shimmer-card .card-meta span {
+    background-image: linear-gradient(
+        110deg,
+        rgba(120, 130, 160, 0.14) 8%,
+        rgba(160, 170, 200, 0.32) 18%,
+        rgba(120, 130, 160, 0.14) 33%
+    );
+    background-size: 220% 100%;
+    animation: shimmer-slide 1.6s linear infinite;
 }
 
 .shimmer-card .flag-container {
-    background-color: var(--shimmer-color);
+    height: 165px;
 }
 
 .shimmer-card .card-title {
-    height: 32px;
-    background-color: var(--shimmer-color);
-    border-radius: 4px;
+    height: 24px;
+    width: 65%;
+    border-radius: 8px;
+    margin-bottom: 16px;
 }
 
-.shimmer-card p {
-    height: 22px;
-    border-radius: 4px;
-    background-color: var(--shimmer-color);
+.shimmer-card .card-meta span {
+    display: block;
+    height: 14px;
+    width: 100%;
+    border-radius: 6px;
 }
 
-.shimmer-card p:last-child {
-    width: 60%;
+.shimmer-card .card-meta span:last-child {
+    width: 70%;
+}
+
+body.dark .shimmer-card .flag-container,
+body.dark .shimmer-card .card-title,
+body.dark .shimmer-card .card-meta span {
+    background-image: linear-gradient(
+        110deg,
+        rgba(255, 255, 255, 0.04) 8%,
+        rgba(255, 255, 255, 0.12) 18%,
+        rgba(255, 255, 255, 0.04) 33%
+    );
+}
+
+@keyframes shimmer-slide {
+    to {
+        background-position: -220% 0;
+    }
 }

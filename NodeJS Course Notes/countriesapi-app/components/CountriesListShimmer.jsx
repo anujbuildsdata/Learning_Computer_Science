@@ -13,9 +13,10 @@ export default function CountriesListShimmer() {
             <div className="flag-container"></div>
             <div className="card-text">
               <h3 className="card-title"></h3>
-              <p></p>
-              <p></p>
-              <p></p>
+              <div className="card-meta">
+                <span></span>
+                <span></span>
+              </div>
             </div>
           </div>
         )

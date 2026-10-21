@@ -1,6 +1,5 @@
 import React from 'react'
 
-import './CountryDetail.css'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import { useTheme } from '../hooks/useTheme'
 import countriesData from '../countriesData'
@@ -17,7 +16,22 @@ export default function CountryDetail() {
     ) || state
 
   if (!country) {
-    return <div>Country Not Found</div>
+    return (
+      <main className={`${isDark ? 'dark' : ''}`}>
+        <div className="error-page">
+          <div className="error-panel">
+            <span className="error-code">404</span>
+            <h1>Country not found</h1>
+            <p>
+              We couldn&apos;t find that country. Try searching for another one.
+            </p>
+            <Link className="back-button" to="/">
+              <i className="fa-solid fa-arrow-left" /> Back home
+            </Link>
+          </div>
+        </div>
+      </main>
+    )
   }
 
   const countryData = {
@@ -42,49 +56,49 @@ export default function CountryDetail() {
   return (
     <main className={`${isDark ? 'dark' : ''}`}>
       <div className="country-details-container">
-        <span className="back-button" onClick={() => history.back()}>
-          <i className="fa-solid fa-arrow-left"></i>&nbsp; Back
-        </span>
+        <button
+          type="button"
+          className="back-button"
+          onClick={() => history.back()}
+        >
+          <i className="fa-solid fa-arrow-left" /> Back
+        </button>
         <div className="country-details">
           <img src={countryData.flag} alt={`${countryData.name} flag`} />
           <div className="details-text-container">
             <h1>{countryData.name}</h1>
             <div className="details-text">
               <p>
-                <b>
-                  Native Name: {countryData.nativeName || countryData.name}
-                </b>
-                <span className="native-name"></span>
+                <span>Native Name</span>
+                <b>{countryData.nativeName || countryData.name}</b>
               </p>
               <p>
-                <b>
-                  Population: {countryData.population.toLocaleString('en-IN')}
-                </b>
-                <span className="population"></span>
+                <span>Population</span>
+                <b>{countryData.population.toLocaleString('en-IN')}</b>
               </p>
               <p>
-                <b>Region: {countryData.region}</b>
-                <span className="region"></span>
+                <span>Region</span>
+                <b>{countryData.region}</b>
               </p>
               <p>
-                <b>Sub Region: {countryData.subregion}</b>
-                <span className="sub-region"></span>
+                <span>Sub Region</span>
+                <b>{countryData.subregion}</b>
               </p>
               <p>
-                <b>Capital: {countryData.capital?.join(', ')}</b>
-                <span className="capital"></span>
+                <span>Capital</span>
+                <b>{countryData.capital?.join(', ')}</b>
               </p>
               <p>
-                <b>Top Level Domain: {countryData.tld}</b>
-                <span className="top-level-domain"></span>
+                <span>Top Level Domain</span>
+                <b>{countryData.tld}</b>
               </p>
               <p>
-                <b>Currencies: {countryData.currencies}</b>
-                <span className="currencies"></span>
+                <span>Currencies</span>
+                <b>{countryData.currencies}</b>
               </p>
               <p>
-                <b>Languages: {countryData.languages}</b>
-                <span className="languages"></span>
+                <span>Languages</span>
+                <b>{countryData.languages}</b>
               </p>
             </div>
             {countryData.borders.length !== 0 && (
